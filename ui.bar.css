@@ -1,0 +1,25 @@
+.BarWrapper {
+	box-sizing: border-box;
+}
+
+.Ui.Bar {
+	min-height: 25px;
+	min-width: 25px;
+	display: flex;
+	flex-direction: row;
+	box-sizing: border-box;
+}
+
+.Ui.Bar[data-position=left],.Ui.Bar[data-position=right] {
+	flex-direction: column;
+}
+
+.Ui.Bar > * {
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+.Ui.Bar > .Spacer {
+	flex-grow: 1;
+	flex-shrink: 1;
+}

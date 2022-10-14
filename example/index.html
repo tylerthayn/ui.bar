@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<title>@tyler.thayn/ui.bar test</title>
+		<!--<link rel="stylesheet" href="../node_modules/jqueryui/jquery-ui.css">-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="Examples.css">
+		<link rel="stylesheet" href="../ui.bar.css">
+		<script src="../node_modules/requirejs/require.js"></script>
+		<!--<script src="Examples.js"></script>-->
+
+		<script>
+			require.config({
+				baseUrl: '../',
+				paths: {
+					'jquery': 'node_modules/jquery/dist/jquery',
+					'jquery-ui': 'node_modules/jqueryui/jquery-ui'
+				}
+			})
+			require(['jquery', 'ui.bar'], ($) => {
+				$(() => {
+					$('.Ui.Bar').Bar({
+						autohide: true,
+						overlay: true,
+						position: top,
+						width: 30
+					})
+
+					$('#Width').val($('.Ui.Bar').Bar('option', 'width'))
+					$('#Width').on('change', () => {
+						$('.Ui.Bar').Bar('option', 'width', parseInt($('#Width').val()))
+					})
+					$('#Position').on('change', () => {
+						$('.Ui.Bar').Bar('option', 'position', $('#Position').val())
+					})
+					$('#Autohide').on('change', () => {
+						$('.Ui.Bar').Bar('option', 'autohide', $('#Autohide').val() == 'true' ? true : false)
+					})
+					$('#Overlay').on('change', () => {
+						$('.Ui.Bar').Bar('option', 'overlay', $('#Overlay').val() == 'true' ? true : false)
+					})
+				})
+			})
+		</script>
+	</head>
+	<body class="TTS">
+		<style class="Example">
+			.Ui.Bar {
+				height: 50px;
+				width: 100%;
+				background-color: #369;
+			}
+			.Ui.Bar i {
+				color: white;
+				font-size: 36px;
+				margin: 4px;
+			}
+			.Ui.Bar i:hover {
+				color: red;
+			}
+		</style>
+
+		<div class="Example">
+			<div class="Ui Bar material-icons" data-position="top" style="display:none;">
+				<i class="materia-icons">home</i>
+				<i class="materia-icons">manage_accounts</i>
+				<i class="materia-icons">email</i>
+				<i class="materia-icons">subscriptions</i>
+				<i class="Spacer">&nbsp;</i>
+				<i class="materia-icons">settings</i>
+			</div>
+			<div class="Main">Lorem Ipsum is the single greatest threat. We are not - we are not keeping up with other websites. Lorem Ipsum best not make any more threats to your website. It will be met with fire and fury like the world has never seen. Does everybody know that pig named Lorem Ipsum? An 'extremely credible source' has called my office and told me that Barack Obama's placeholder text is a fraud.</div>
+		</div>
+		<div class="Controls">
+			<div>
+				<label for="Width" class="form-label">Width</label>
+				<input type="number" class="form-control" id="Width">
+			</div>
+			<div>
+				<label for="Position" class="form-label">Position</label>
+				<select id="Position" class="form-control">
+					<option value="top" selected>Top</option>
+					<option value="bottom">Bottom</option>
+					<option value="left">Left</option>
+					<option value="right">Right</option>
+				</select>
+			</div>
+			<div>
+				<label for="Autohide" class="form-label">Autohide</label>
+				<select id="Autohide" class="form-control">
+					<option value="false" selected>false</option>
+					<option value="true">true</option>
+				</select>
+			</div>
+			<div>
+				<label for="Overlay" class="form-label">Overlay</label>
+				<select id="Overlay" class="form-control">
+					<option value="false">false</option>
+					<option value="true" selected>true</option>
+				</select>
+			</div>
+		</div>
+	</body>
+</html>
